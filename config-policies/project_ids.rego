@@ -1,4 +1,4 @@
 package org
 policy_name["project_ids"]
 
-django_demo_id := "f912bb25-7955-4a1e-b110-1190dc6a6b60"
+django_demo_id := "d9d6e2ce-777c-4931-abb5-4f2e578be080"
