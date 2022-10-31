@@ -7,12 +7,12 @@ workflows:
   main-workflow:
     jobs:
       - diff-policy-bundle:
-          context: <my-context>
+          context: cpm
           filters:
             branches:
               ignore: main # on all branches other than main
       - push-policy-bundle:
-          context: <my-context>
+          context: cpm
           filters:
             branches:
               only: main # only on the main branch
