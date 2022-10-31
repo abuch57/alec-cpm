@@ -7,7 +7,7 @@ import data.circleci.config
 policy_name["demo_orbs"]
 
 # signal to circleci that check_demo_orbs is enabled and must be included when making a decision
-enable_rule["check_demo_orbs"] { data.meta.project_id == django_demo_id}
+enable_rule["check_demo_orbs"] { data.meta.project_id == "d9d6e2ce-777c-4931-abb5-4f2e578be080"}
 
 # signal to circleci that check_demo_orbs is a hard_failure condition and that builds should be
 # stopped if this rule is not satisfied.
