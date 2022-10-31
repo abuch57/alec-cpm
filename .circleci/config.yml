@@ -1,0 +1,37 @@
+version: 2.1
+
+orbs:
+  circleci-cli: circleci/circleci-cli@0.1.9 # Use orb to make the `circleci-cli/default` executor available for running jobs
+
+workflows:
+  main-workflow:
+    jobs:
+      - diff-policy-bundle:
+          context: cpm
+          filters:
+            branches:
+              ignore: main # on all branches other than main
+      - push-policy-bundle:
+          context: cpm
+          filters:
+            branches:
+              only: main # only on the main branch
+
+jobs:
+  diff-policy-bundle:
+    executor: circleci-cli/default
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: Diff policy bundle
+          command: circleci policy diff ./config --owner-id $ORG_ID # show a diff of the policy bundle
+
+  push-policy-bundle:
+    executor: circleci-cli/default
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: Push policy bundle
+          command: circleci policy push ./config --no-prompt --owner-id $ORG_ID # push the policy bundle to CircleCI
